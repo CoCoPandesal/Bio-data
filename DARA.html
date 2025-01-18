@@ -14,7 +14,7 @@
                 border: 1px solid black;
                 margin-right: 10px;
             }
-            .container {
+            .container { 
                 width: 50%;
                 margin: 0 auto;
                 border: 1px solid black;
@@ -71,10 +71,42 @@
                 margin-top: 60px;
                 margin-right: 25px;
             }
+            .btn {
+                margin-bottom: 0 auto;
+            }
+            button {
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                text-align: center;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+            button:hover {
+                background-color: #45a049;
+            }
         </style>
     </head>
         <body>
-            <div class="container">
+            <div class="btn">
+                <button id="printButton" onclick="window.print()">Print this page</button>
+                <button id="download">Download PDF</button>
+
+                <script>
+                    window.onload = function(){
+                        document.getElementById("download")
+                        .addEventListener("click",()=>{
+                            const kani = this.document.getElementById("kani");
+                            console.log(kani)
+                            html2pdf().from(kani).save();
+                        })
+                    }
+                </script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
+            </div>
+            <div class="container" id="kani">
                 <h1>BIO-DATA</h1>
                 <div class="box"> </div>
                 
