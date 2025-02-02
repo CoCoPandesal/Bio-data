@@ -1,247 +1,170 @@
-<html>
-    <head>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 20px;
-            }
-            .box {
-                position: absolute;
-                top: 10px;
-                right: 10px;
-                width: 125px;
-                height: 125px;
-                border: 1px solid black;
-                margin-right: 10px;
-            }
-            .container { 
-                width: 50%;
-                margin: 0 auto;
-                border: 1px solid black;
-                padding: 20px;
-                position: relative;
-            }
-            h1 {
-                text-align: center;
-                margin-bottom: 55px;
-                margin-top: 40px;
-            }
-            h2 {
-                color: white;
-                background-color: black;
-                border-radius: 10px;
-                padding: 6px;
-            }
-            .section {
-                margin-bottom: 20px;
-                border: 1px solid black;
-                padding: 10px;
-            }
-            .field-row {
-                display: flex;
-                justify-content: space-between;
-            }
-            .field {
-                width: 48%;
-                border-bottom: 1px solid black;
-                padding: 5px 0;
-            }
-            .field-3 {
-                width: 31%;
-                border-bottom: 1px solid black;
-                padding: 5px 0;
-            }
-            .field-longline {
-                width: 100%;
-                border-bottom: 1px solid black;
-                padding: 5px 0;
-            }
-            .section-id {
-                margin-bottom: 20px;
-                border: 1px solid black;
-                padding: 10px;
-                width: 48%;
-            }
-            .id {
-                display: flex;
-                justify-content: space-between;
-            }
-            .signature {
-                text-align: right;
-                margin-top: 60px;
-                margin-right: 25px;
-            }
-            .btn {
-                margin-bottom: 0 auto;
-            }
-            button {
-                background-color: #4CAF50;
-                color: white;
-                border: none;
-                padding: 10px 20px;
-                text-align: center;
-                font-size: 16px;
-                cursor: pointer;
-                border-radius: 5px;
-            }
-            button:hover {
-                background-color: #45a049;
-            }
-        </style>
-    </head>
-        <body>
-            <div class="btn">
-                <button id="printButton" onclick="window.print()">Print this page</button>
-                <button id="download">Download PDF</button>
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
 
-                <script>
-                    window.onload = function(){
-                        document.getElementById("download")
-                        .addEventListener("click",()=>{
-                            const kani = this.document.getElementById("kani");
-                            console.log(kani)
-                            html2pdf().from(kani).save();
-                        })
-                    }
-                </script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
+<body>
+    <div class="btn">
+        <button class="btn btn-primary" id="printButton" onclick="window.print()">Print this page</button>
+        <button class="btn btn-secondary" id="download">Download PDF</button>
+
+        <script>
+            window.onload = function () {
+                document.getElementById("download")
+                    .addEventListener("click", () => {
+                        const kani = this.document.getElementById("kani");
+                        console.log(kani)
+                        html2pdf().from(kani).save();
+                    })
+            }
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
+    </div>
+    <div class="container border border-4 px-4" id="kani">
+        <div class="d-flex flex-row">
+            <div class="d-flex justify-content-center h1 col-10">BIO-DATA</div>
+            <div class="border border-4 col-auto d-flex justify-content-center" style="height: 100px; width: 100px;"> </div>
+        </div>
+
+        <!-- Personal -->
+        <div class="section">
+            <h2>PERSONAL DATA</h2>
+            <div class="d-flex">
+                <div class="col">Position Desired: </div>
+                <div class="col">Date: </div>
             </div>
-            <div class="container" id="kani">
-                <h1>BIO-DATA</h1>
-                <div class="box"> </div>
-                
-                <!-- Personal -->
-                <div class="section">
-                    <h2>PERSONAL DATA</h2>
-                    <div class="field-row">
-                        <div class="field">Position Desired: </div>
-                        <div class="field">Date: </div>
-                    </div>
-                    <div class="field-row">
-                        <div class="field">Name: </div>
-                        <div class="field">Gender: </div>
-                    </div>
-                    <div class="field-longline">City Address: </div>
-                    <div class="field-longline">Personal Address: </div>
-                    <div class="field-row">
-                        <div class="field">Telophone: </div>
-                        <div class="field">Cellphone: </div>
-                    </div>
-                    <div class="field-row">
-                        <div class="field">E-mail Address: </div>
-                        <div class="field">: </div>
-                    </div>
-                    <div class="field-row">
-                        <div class="field">Date of Birth: </div>
-                        <div class="field">Birth of Place: </div>
-                    </div>
-                    <div class="field-row">
-                        <div class="field">Civil Status: </div>
-                        <div class="field">Citizenship: </div>
-                    </div>
-                    <div class="field-row">
-                        <div class="field">Height: </div>
-                        <div class="field">Weight: </div>
-                    </div>
-                    <div class="field-longline">Religion: </div>
-                    <div class="field-row">
-                        <div class="field">Spouse: </div>
-                        <div class="field">Occupation: </div>
-                    </div>
-                    <div class="field-row">
-                        <div class="field">Name of Children: </div>
-                        <div class="field">Date Of Birth: </div>
-                    </div>
-                    <div class="field-row">
-                        <div class="field">: </div>
-                        <div class="field">: </div>
-                    </div>
-                    <div class="field-row">
-                        <div class="field">: </div>
-                        <div class="field">: </div>
-                    </div>
-                    <div class="field-row">
-                        <div class="field">Father's: </div>
-                        <div class="field">Occupation: </div>
-                    </div>
-                    <div class="field-row">
-                        <div class="field">Mother's: </div>
-                        <div class="field">Occupation: </div>
-                    </div>
-                    <div class="field-longline">Language or dialect spoken and written: </div>
-                    <div class="field-longline">Person to be contacted in case of emergencvy: </div>
-                    <div class="field-longline">His or her address and telephone: </div>
-                </div>
-                 <!-- Educational -->
-                <div class="section">
-                    <h2>EDUCATIONAL BACKGROUND</h2>
-                    <div class="field-row">
-                        <div class="field">Elementary: </div>
-                        <div class="field">Year Graduated: </div>
-                    </div>
-                    <div class="field-row">
-                        <div class="field">High School: </div>
-                        <div class="field">Year Graduated: </div>
-                    </div>
-                    <div class="field-row">
-                        <div class="field">College: </div>
-                        <div class="field">Year Graduated: </div>
-                    </div>
-                    <div class="field-longline">Degree Recceived: </div>
-                    <div class="field-longline">Special Skills: </div>
-                </div>
-                 <!-- Employment -->
-                <div class="section">
-                    <h2>EMPLOYMENT RECORD</h2>
-                    <div class="field-longline">Company Name: </div>
-                    <div class="field-row">
-                        <div class="field-3">Position: </div>
-                        <div class="field-3">From: </div>
-                        <div class="field-3">To: </div>
-                    </div>
-                    <div class="field-longline">Company Name: </div>
-                    <div class="field-row">
-                        <div class="field-3">Position: </div>
-                        <div class="field-3">From: </div>
-                        <div class="field-3">To: </div>
-                    </div>
-                </div>
-                 <!-- Character -->
-                <div class="section">
-                    <h2>CHARACTER REFERENCE</h2>
-                    <div class="field-row">
-                        <div class="field">Name: </div>
-                        <div class="field">Campany: </div>
-                    </div>
-                    <div class="field-row">
-                        <div class="field">Position: </div>
-                        <div class="field">Contact No.: </div>
-                    </div>
-                    <div class="field-row">
-                        <div class="field">Name: </div>
-                        <div class="field">Campany: </div>
-                    </div>
-                    <div class="field-row">
-                        <div class="field">Position: </div>
-                        <div class="field">Contact No.: </div>
-                    </div>
-                </div>
-                 <!-- Signature -->
-                <div class="id">
-                    <div class="section-id">
-                        <div class="field-longline">Res. Cert. No.: </div>
-                        <div class="field-longline">Issued at: </div>
-                        <div class="field-longline">Issued on: </div>
-                        <div class="field-longline">SSS: </div>
-                        <div class="field-longline">TIN: </div>
-                        <div class="field-longline">NBI No.: </div>
-                        <div class="field-longline">Passport No.: </div>
-                    </div>
-                        <div class="signature">
-                            <p>__________________________</p>
-                            <p style="text-align: center;">Applicant's Signature</p>
-                        </div>
-                </div>
+            <div class="field-row">
+                <div class="field">Name: </div>
+                <div class="field">Gender: </div>
             </div>
-        </body>
+            <div class="field-longline">City Address: </div>
+            <div class="field-longline">Personal Address: </div>
+            <div class="field-row">
+                <div class="field">Telophone: </div>
+                <div class="field">Cellphone: </div>
+            </div>
+            <div class="field-row">
+                <div class="field">E-mail Address: </div>
+                <div class="field">: </div>
+            </div>
+            <div class="field-row">
+                <div class="field">Date of Birth: </div>
+                <div class="field">Birth of Place: </div>
+            </div>
+            <div class="field-row">
+                <div class="field">Civil Status: </div>
+                <div class="field">Citizenship: </div>
+            </div>
+            <div class="field-row">
+                <div class="field">Height: </div>
+                <div class="field">Weight: </div>
+            </div>
+            <div class="field-longline">Religion: </div>
+            <div class="field-row">
+                <div class="field">Spouse: </div>
+                <div class="field">Occupation: </div>
+            </div>
+            <div class="field-row">
+                <div class="field">Name of Children: </div>
+                <div class="field">Date Of Birth: </div>
+            </div>
+            <div class="field-row">
+                <div class="field">: </div>
+                <div class="field">: </div>
+            </div>
+            <div class="field-row">
+                <div class="field">: </div>
+                <div class="field">: </div>
+            </div>
+            <div class="field-row">
+                <div class="field">Father's: </div>
+                <div class="field">Occupation: </div>
+            </div>
+            <div class="field-row">
+                <div class="field">Mother's: </div>
+                <div class="field">Occupation: </div>
+            </div>
+            <div class="field-longline">Language or dialect spoken and written: </div>
+            <div class="field-longline">Person to be contacted in case of emergencvy: </div>
+            <div class="field-longline">His or her address and telephone: </div>
+        </div>
+        <!-- Educational -->
+        <div class="section">
+            <h2>EDUCATIONAL BACKGROUND</h2>
+            <div class="field-row">
+                <div class="field">Elementary: </div>
+                <div class="field">Year Graduated: </div>
+            </div>
+            <div class="field-row">
+                <div class="field">High School: </div>
+                <div class="field">Year Graduated: </div>
+            </div>
+            <div class="field-row">
+                <div class="field">College: </div>
+                <div class="field">Year Graduated: </div>
+            </div>
+            <div class="field-longline">Degree Recceived: </div>
+            <div class="field-longline">Special Skills: </div>
+        </div>
+        <!-- Employment -->
+        <div class="section">
+            <h2>EMPLOYMENT RECORD</h2>
+            <div class="field-longline">Company Name: </div>
+            <div class="field-row">
+                <div class="field-3">Position: </div>
+                <div class="field-3">From: </div>
+                <div class="field-3">To: </div>
+            </div>
+            <div class="field-longline">Company Name: </div>
+            <div class="field-row">
+                <div class="field-3">Position: </div>
+                <div class="field-3">From: </div>
+                <div class="field-3">To: </div>
+            </div>
+        </div>
+        <!-- Character -->
+        <div class="section">
+            <h2>CHARACTER REFERENCE</h2>
+            <div class="field-row">
+                <div class="field">Name: </div>
+                <div class="field">Campany: </div>
+            </div>
+            <div class="field-row">
+                <div class="field">Position: </div>
+                <div class="field">Contact No.: </div>
+            </div>
+            <div class="field-row">
+                <div class="field">Name: </div>
+                <div class="field">Campany: </div>
+            </div>
+            <div class="field-row">
+                <div class="field">Position: </div>
+                <div class="field">Contact No.: </div>
+            </div>
+        </div>
+        <!-- Signature -->
+        <div class="id">
+            <div class="section-id">
+                <div class="field-longline">Res. Cert. No.: </div>
+                <div class="field-longline">Issued at: </div>
+                <div class="field-longline">Issued on: </div>
+                <div class="field-longline">SSS: </div>
+                <div class="field-longline">TIN: </div>
+                <div class="field-longline">NBI No.: </div>
+                <div class="field-longline">Passport No.: </div>
+            </div>
+            <div class="signature">
+                <p>__________________________</p>
+                <p style="text-align: center;">Applicant's Signature</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>
